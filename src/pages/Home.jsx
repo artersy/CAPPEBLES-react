@@ -1,0 +1,94 @@
+import { useNavigate } from "react-router-dom"
+
+import Header2 from "../components/Header2"
+import Footer from "../components/Footer"
+
+import creates from "../assets/create.png"
+import find from "../assets/find.png"
+
+
+function Home() {
+    const navigate = useNavigate();
+
+    return (
+        <div className="min-h-screen bg-[linear-gradient(to_top_right,#03448C,#19B48E)] text-white">
+
+            <Header2 />
+
+            <div className="flex flex-col items-center justify-center text-center px-6 pt-24">
+
+                <h1 className="text-12xl md:text-9xl font-black leading-none mt-4">
+                    CAP PEBBLES
+                </h1>
+
+            </div>
+
+            <div className="mt-20 px-5 text-center bg-white/30 py-12">
+
+
+                <p className="max-w-5xl mx-auto mt-4 text-white/90 pb-5 text-lg">
+                    The CapPebbles Web-Based Capstone Group management and information System is a web-based platform designed to monitor, manage, and advise all aspects of the IT Capstone Group. The System will serve as the official digital domain where all students, advisors, and administrators can engage simultaneously.
+                </p>
+
+                <h2 className="text-5xl font-bold mt-10">
+                    Our Features
+                </h2>
+                <p className="max-w-2xl mx-auto mt-4 text-white/90 text-lg">
+                    These tools allow students to find groups or create their own, helping them in their academic projects.
+                </p>
+
+                <div className="flex flex-col gap-6 items-center mt-10">
+
+                    <div className="cursor-pointer w-full max-w-4xl bg-[#bff3f5] hover:scale-[1.02] transition rounded-2xl p-6 flex items-center gap-6 shadow-md">
+
+                        <div
+                            onClick={() => navigate("/create")}
+                            className="cursor-pointer flex flex-col items-center justify-center min-w-[120px]">
+                            <div className="text-2xl font-black text-[#0a4a6b]">
+                                CREATE
+                            </div>
+
+                            <img
+                                src={creates}
+                                alt="Create Icon"
+                                className="w-16 h-16 object-contain mt-2"
+                            />
+                        </div>
+
+                        <p className="text-[#0a4a6b]">
+                            Through this feature, students can create a group by providing important details such as group name, project description, and number of members required.
+                        </p>
+
+                    </div>
+
+                    <div
+                        onClick={() => navigate("/find")}
+                        className="cursor-pointer w-full max-w-4xl bg-[#bff3f5] hover:scale-[1.02] transition rounded-2xl p-6 flex items-center gap-6 shadow-md">
+
+                        <div className="flex flex-col items-center justify-center min-w-[120px]">
+                            <div className="text-2xl font-black text-[#0a4a6b]">
+                                FIND
+                            </div>
+
+                            <img
+                                src={find}
+                                alt="Find Icon"
+                                className="w-16 h-16 object-contain mt-2"
+                            />
+                        </div>
+
+                        <p className="text-[#0a4a6b]">
+                            This feature helps students who are still searching for teammates for their capstone project or other academic collaborations.
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+
+            <Footer />
+
+        </div>
+    )
+}
+
+export default Home
