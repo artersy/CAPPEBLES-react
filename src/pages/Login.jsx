@@ -40,8 +40,6 @@ function Login() {
                     Login
                 </button>
 
-
-
             </div>
 
             {/* <Footer /> */}

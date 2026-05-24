@@ -7,7 +7,9 @@ export default function Header2() {
   const navigate = useNavigate();
 
   return (
-    <header2 className="w-full px-8 py-4 flex items-center justify-between">
+    <header2 className="w-full px-45 py-5 flex items-center justify-between
+      
+    ">
 
       <div className="flex items-center gap-3">
         <img
@@ -29,7 +31,7 @@ export default function Header2() {
           />
         </div>
 
-        <a href="/home" className="hover:text-blue-500 transition">
+        <a href="/home" className="hover:text-blue transition">
           Home
         </a>
 
