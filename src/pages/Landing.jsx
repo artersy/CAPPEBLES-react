@@ -36,7 +36,7 @@ function Landing() {
                     </button>
 
                     <button className="bg-[#19B48E] text-white px-6 py-3 rounded-xl font-semibold hover:scale-105 transition"
-                    onClick={() => navigate("/login")}>
+                    onClick={() => navigate("/Auth")}>
                         Log In
                     </button>
                 </div>

@@ -9,7 +9,7 @@ import Find from "./pages/Find"
 
 import About from "./components/About"
 
-import Login from "./pages/Login"
+import Auth from "./pages/Auth"
 import Signup from "./pages/Signup"
 
 import Profile from "./pages/Profile"
@@ -17,13 +17,14 @@ import EditProfile from "./pages/EditProfile"
 
 
 function App() {
+
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/start" element={<Start />} />
         
-        <Route path="/login" element={<Login />} />
+        <Route path="/Auth" element={<Auth />} />
         <Route path="/signup" element={<Signup />} />
 
         <Route path="/home" element={<Home />} />
