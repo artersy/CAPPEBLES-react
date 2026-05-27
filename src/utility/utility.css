@@ -1,19 +1,19 @@
-.section-margin-x{
+.section-margin-x {
     margin: 0 150px 0 150px;
 }
 
-.content-margint-top{
+.content-margint-top {
     margin-top: 80px;
 }
 
-.auth-text{
-    color:#3a6a71;
+.auth-text {
+    color: #3a6a71;
     font-weight: bolder;
     display: block;
 }
 
 
-.login-inputs{
+.login-inputs {
     background-color: white;
     width: 100%;
     height: 3rem;
@@ -23,17 +23,35 @@
     border-style: none;
     color: black;
     padding: 1rem;
+    display: block;
 
 }
 
-.login-inputs:focus{
+.login-inputs:focus {
     border: none;
     outline: none;
 }
 
-.auth-button{
+.auth-button {
     padding: 10px;
     border-radius: 11px;
     font-weight: bold;
 }
 
+.form input {
+    background-color: transparent;
+    border-bottom: 1px solid #2db3a2;
+    border-radius: 0;
+    padding-left: 0;
+    padding-bottom: 1px;
+}
+
+
+.form input:focus {
+    background-color: transparent;
+    border-bottom: 1px solid #2db3a2;
+    border-radius: 0;
+    padding-left: 0;
+    padding-bottom: 0.5px;
+
+}

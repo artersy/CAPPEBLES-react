@@ -1,11 +1,10 @@
 import React from 'react'
 
-function Register() {
+function Register({ Button, setButton }) {
     return (
-        
-        <div className="  section-margin-x flex flex-row gap-10 content-margint-top ">
-            HINDE PA TAPOS
-            <div className="flex-1 flex flex-col px-10 py-10  bg-[#ffffff21] border border-none rounded-2xl">
+
+        <div className="  section-margin-x flex  flex-row gap-10 content-margint-top ">
+            <div className=" flex flex-1 flex-col px-10 py-10  bg-[#ffffff21] border border-none rounded-2xl">
                 <div className="flex-1 flex justify-start items-center">
                     <img
                         className="p-10 bg-[#ffffff21] rounded-2xl"
@@ -29,33 +28,71 @@ function Register() {
 
             </div>
 
-            <div className="w-full max-w-md bg-[rgba(222,255,255,0.9)] flex flex-col py-10 px-10 rounded-2xl">                    <h1 className="text-center text-[#0f3c3a] font-bold text-5xl">CREATE YOUR ACCOUNT
-            </h1>
-                <form className="mt-10 flex flex-col gap-3">
-                    <label className="auth-text">School Email</label>
+            <div className="w-full  bg-[rgba(222,255,255,0.9)] flex flex-1 flex-col py-10 px-10 rounded-2xl">
+                <h1 className="text-center text-[#0f3c3a] font-bold text-2xl">CREATE YOUR ACCOUNT
+                </h1>
+                <form className="mt-10 flex flex-col gap-3 form ">
+                    <div className='flex gap-5 input-row'>
+                        <div className='flex-1'>
+                            <label className="auth-text block">First Name
+                            </label>
+                            <input
+                                className="login-inputs"
+                                type="text" name="name" required
+                            />
+                        </div>
+
+                        <div className='flex-1'>
+                            <label className="auth-text">
+                                Last Name
+                            </label>
+                            <input
+                                className="login-inputs"
+                                type="text" name="name" required
+                            />
+                        </div>
+                    </div>
+
+                    <label className="auth-text ">School Email</label>
                     <input
-                        className="login-inputs"
                         type="text" name="name" required
-                        placeholder="example@school.edu"
+                        className='login-inputs'
                     />
 
-                    <label className="auth-text">Password</label>
-                    <input
-                        className="login-inputs"
-                        type="password"
-                        placeholder="••••••••" />
+                    <div className='flex input-row gap-5 '>
+                        <div className='flex-1'>
+                            <label className="auth-text block">
+                                Password
+                            </label>
+                            <input
+                                className="login-inputs"
+                                type="password" name="name" required
 
+                            />
+                        </div>
+
+                        <div className='flex-1'>
+                            <label className="auth-text">
+                                Confirm Password
+
+                            </label>
+                            <input
+                                className="login-inputs"
+                                type="password" name="name" required
+                            />
+                        </div>
+                    </div>
                     <button
                         type="submit"
                         className="auth-button bg-[#21ad7f]"
-                    > Log in</button>
+                    > Create Account</button>
                     <p className=" text-center text-black">Or</p>
 
                 </form>
                 <button
                     className=" bg-white auth-button text-black "
-                    onClick={() => setButton(false)}
-                > Get Started </button>
+                    onClick={() => setButton(true)}
+                > Already have an account? Log In  </button>
 
             </div>
         </div>

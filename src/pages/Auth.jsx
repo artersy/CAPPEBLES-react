@@ -21,7 +21,7 @@ function Auth() {
             {Button ?
                 <Login Button={Button} setButton={setButton} />
                 :
-                <Register/>
+                <Register Button={Button} setButton={setButton}/>
             }
 
 
