@@ -1,6 +1,19 @@
 import React from 'react'
+import { useEffect } from 'react'
+
+import { gsap } from 'gsap'
+import { useGSAP } from '@gsap/react'
 
 function Register({ Button, setButton }) {
+
+    useGSAP(()=>{
+
+    },[Button])
+
+    useEffect(()=>{
+        console.log('test')
+    },[Button])
+
     return (
 
         <div className="  section-margin-x flex  flex-row gap-10 content-margint-top ">
