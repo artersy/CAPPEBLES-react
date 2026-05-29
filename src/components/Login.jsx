@@ -11,7 +11,7 @@ function Login({Button, setButton}) {
 
     useGSAP(()=>{
         gsap.fromTo(login.current,{
-            width:"700px`",
+            width:"700px",
             opacity:0.8
         },
 
