@@ -2,8 +2,9 @@ import { useNavigate } from "react-router-dom"
 import logo from "../assets/logo.png"
 import profile from "../assets/profile.png"
 import notifications from "../assets/notifications.png"
+import About from "../components/About";
 
-export default function Header2() {
+export default function Header2({ onOpenAbout }) {
   const navigate = useNavigate();
 
   return (
@@ -43,9 +44,12 @@ export default function Header2() {
           Find
         </a>
 
-        <a href="/about" className="hover:text-blue-500 transition">
+        <button
+          onClick={onOpenAbout}
+          className="hover:text-blue-500 transition"
+        >
           About
-        </a>
+        </button>
 
         <div
           onClick={() => navigate("/profile")}>

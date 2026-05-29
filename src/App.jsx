@@ -7,8 +7,6 @@ import Home from "./pages/Home"
 import Create from "./pages/Create"
 import Find from "./pages/Find"
 
-import About from "./components/About"
-
 import Auth from "./pages/Auth"
 import Signup from "./pages/Signup"
 
@@ -30,8 +28,6 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/create" element={<Create />} />
         <Route path="/find" element={<Find />} />
-
-        <Route path="/about" element={<About />} />
         
         <Route path="/profile" element={<Profile />} />
         <Route path="/edit-profile" element={<EditProfile />} />
