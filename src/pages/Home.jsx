@@ -13,7 +13,7 @@ function Home() {
     const [showAbout, setShowAbout] = useState(false);
 
     return (
-        <div className="min-h-screen bg-[linear-gradient(to_top_right,#03448C,#19B48E)] text-white">
+            <div className="min-h-screen bg-[linear-gradient(to_top_right,#03448C,#19B48E)] text-white">
 
             <Header2 onOpenAbout={() => setShowAbout(true)} />
             <About
