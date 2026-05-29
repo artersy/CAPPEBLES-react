@@ -1,6 +1,13 @@
 import React from 'react'
 
+import { Navigate, useNavigate } from 'react-router-dom'
+
 function SuccessModal({ openModal,setOpenModal}) {
+    const navigate = useNavigate()
+
+    const navigaHandler = () =>{
+        navigate('/home')
+    }
 
     return (
         <div
@@ -60,7 +67,7 @@ function SuccessModal({ openModal,setOpenModal}) {
                     successfully submitted.
                 </p>
                 <button
-                    onClick={() => setOpenModal(false)}
+                    onClick={() => navigaHandler()}
                     className="
                         mt-6
                         bg-[#0e9995]
