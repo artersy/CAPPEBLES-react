@@ -46,6 +46,7 @@ function Login({Button, setButton}) {
                     <button
                         type="submit"
                         className="auth-button bg-[#21ad7f]"
+                        onClick={() => navigate("/home")}
                     > Log in</button>
                     <p className=" text-center text-black">Or</p>
 
