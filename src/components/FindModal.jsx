@@ -20,7 +20,6 @@ function FindModal({ openModal, setOpenModal }) {
       ) :
         <div className="relative w-full max-w-[30rem] bg-[#eaf4f4] rounded-2xl p-4 sm:p-8 shadow-2xl max-h-[90vh] overflow-y-auto">
 
-          {/* CLOSE BUTTON */}
           <button
             onClick={() => setOpenModal(false)}
             className="absolute top-3 right-3 sm:top-4 sm:right-4 w-8 h-8 flex items-center justify-center bg-white/50 hover:bg-white/80 rounded-full transition-colors"
@@ -31,7 +30,6 @@ function FindModal({ openModal, setOpenModal }) {
             </svg>
           </button>
 
-          {/* SKILLS */}
           <div className="flex flex-wrap gap-3 sm:gap-4 mt-8 sm:mt-12">
             <button className="bg-[#0e9995] text-white px-4 sm:px-8 py-2 sm:py-3 rounded-xl font-bold shadow-md text-sm sm:text-base hover:scale-105 transition-transform duration-200">
               UI/UX
@@ -54,7 +52,6 @@ function FindModal({ openModal, setOpenModal }) {
             </button>
           </div>
 
-          {/* FORM */}
           <div className="mt-6 sm:mt-8 flex flex-col">
             <label className="text-[#0e9995] font-semibold mb-2 text-sm sm:text-base">
               Your name
@@ -75,7 +72,6 @@ function FindModal({ openModal, setOpenModal }) {
               placeholder="Write your message here..."
             />
 
-            {/* BUTTON */}
             <button
               className="mt-5 sm:mt-6 bg-[#0e9995] text-white py-2.5 sm:py-3 rounded-lg shadow-md hover:scale-105 transition-transform duration-200 text-sm sm:text-base"
               onClick={() => setSuccess(true)}
