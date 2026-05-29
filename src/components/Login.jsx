@@ -3,29 +3,58 @@ import React from 'react'
 import { useGSAP } from '@gsap/react'
 import { gsap } from "gsap"
 
-import { useRef } from 'react'
+import { useRef,useState } from 'react'
+import { useNavigate } from "react-router-dom"
 
-function Login({Button, setButton}) {
+function Login({ Button, setButton }) {
+
+
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const navigate = useNavigate()
+
+    const handleLogin = (e) => {
+        e.preventDefault()
+
+        const storedData = JSON.parse(localStorage.getItem("userData"))
+
+        if (!storedData) {
+            alert("No user data found. Please register first.")
+            return
+        }
+
+        if (
+            storedData.email === email &&
+            storedData.password === password
+        ) {
+            console.log("Login successful!")
+            navigate("/home")
+        } else {
+            alert("Invalid email or password")
+        }
+    }
 
     const login = useRef(null)
 
-    useGSAP(()=>{
-        gsap.fromTo(login.current,{
-            width:"700px",
-            height:"540px",
-            opacity:0.8
+    useGSAP(() => {
+        gsap.fromTo(login.current, {
+            width: "700px",
+            height: "540px",
+            opacity: 0.8
         },
 
-        {
-            width:"488px",
-            height:"488px",
-            opacity:1,
-            duration:1,
-            ease:'power3.inOut'
-        }
-    )
-        
-    },[Button])
+            {
+                width: "488px",
+                height: "488px",
+                opacity: 1,
+                duration: 1,
+                ease: 'power3.inOut'
+            }
+        )
+
+    }, [Button])
+
+
 
 
     return (
@@ -56,27 +85,36 @@ function Login({Button, setButton}) {
             </div>
 
             <div className="w-full  bg-[rgba(222,255,255,0.9)] flex flex-col py-10 px-10 rounded-2xl"
-            ref={login}
+                ref={login}
             >
                 <h1 className="text-center text-[#0f3c3a] font-bold text-5xl">Log in</h1>
-                <form className="mt-10 flex flex-col gap-3">
+                <form className="mt-10 flex flex-col gap-3"
+                    onSubmit={handleLogin}
+                >
                     <label className="auth-text">School Email</label>
                     <input
                         className="login-inputs"
-                        type="text" name="name" required
+                        type="text"
                         placeholder="example@school.edu"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
                     />
 
                     <label className="auth-text">Password</label>
                     <input
                         className="login-inputs"
                         type="password"
-                        placeholder="••••••••" />
+                        placeholder="••••••••"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
 
                     <button
                         type="submit"
                         className="auth-button bg-[#21ad7f]"
-                        onClick={() => navigate("/home")}
+                       
                     > Log in</button>
                     <p className=" text-center text-black">Or</p>
 

@@ -1,31 +1,63 @@
 import React from 'react'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
+
+import { useNavigate } from 'react-router-dom'
 
 import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
 
 function Register({ Button, setButton }) {
-    const registerRef = useRef(null)
+    const navigate = useNavigate()
 
+    const registerRef = useRef(null)
+    const [formData, setFormData] = useState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+        confirmPassword: ""
+    })
+
+    const handleChange = (e) => {
+        const { name, value } = e.target
+
+        setFormData((prev) => ({
+            ...prev,
+            [name]: value
+        }))
+    }
+
+    const getFormData = (e) => {
+        e.preventDefault()
+
+        if (formData) {
+            navigate("/home")
+            localStorage.setItem("userData", JSON.stringify(formData));
+
+
+        }
+
+    }
 
 
     useGSAP(() => {
 
-        gsap.fromTo(registerRef.current,{
-            width:"488px",
+        gsap.fromTo(registerRef.current, {
+            width: "488px",
             opacity: 0.8,
-            
-        },
-        {width:"700px",
-            opacity:1,
-            duration:1,
-            ease:'power3.inOut'
-        }
-    
-    )
 
-       
-    },[Button] )
+        },
+            {
+                width: "700px",
+                opacity: 1,
+                duration: 1,
+                ease: 'power3.inOut'
+            }
+
+        )
+
+
+    }, [Button])
 
     useEffect(() => {
         console.log('test')
@@ -62,19 +94,25 @@ function Register({ Button, setButton }) {
             </div>
 
             <div className="w-full  bg-[rgba(222,255,255,0.9)] flex flex-col py-10 px-10 rounded-2xl"
-            
+
                 ref={registerRef}
             >
                 <h1 className="text-center text-[#0f3c3a] font-bold text-2xl">CREATE YOUR ACCOUNT
                 </h1>
-                <form className="mt-10 flex flex-col gap-3 form ">
+                <form className="mt-10 flex flex-col gap-3 form "
+                    onSubmit={getFormData}
+                >
                     <div className='flex gap-5 input-row'>
                         <div className='flex-1'>
                             <label className="auth-text block">First Name
                             </label>
                             <input
                                 className="login-inputs"
-                                type="text" name="name" required
+                                type="text" name="name"
+                                name="firstName"
+                                value={formData.firstName}
+                                onChange={handleChange}
+                                required
                             />
                         </div>
 
@@ -84,15 +122,23 @@ function Register({ Button, setButton }) {
                             </label>
                             <input
                                 className="login-inputs"
-                                type="text" name="name" required
+                                type="text" name="name"
+                                required
+                                value={formData.lastName}
+                                onChange={handleChange}
+                                name="lastName"
                             />
                         </div>
                     </div>
 
                     <label className="auth-text ">School Email</label>
                     <input
-                        type="text" name="name" required
+                        type="text" name="name"
+                        required
                         className='login-inputs'
+                        value={formData.email}
+                        onChange={handleChange}
+                        name="email"
                     />
 
                     <div className='flex input-row gap-5 '>
@@ -102,7 +148,11 @@ function Register({ Button, setButton }) {
                             </label>
                             <input
                                 className="login-inputs"
-                                type="password" name="name" required
+                                type="password" name="name"
+                                required
+                                value={formData.password}
+                                onChange={handleChange}
+                                name="password"
 
                             />
                         </div>
@@ -114,7 +164,11 @@ function Register({ Button, setButton }) {
                             </label>
                             <input
                                 className="login-inputs"
-                                type="password" name="name" required
+                                type="password" name="name"
+                                required
+                                value={formData.confirmPassword}
+                                onChange={handleChange}
+                                name="confirmPassword"
                             />
                         </div>
                     </div>
