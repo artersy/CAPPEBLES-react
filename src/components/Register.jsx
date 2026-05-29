@@ -25,7 +25,7 @@ function Register({ Button, setButton }) {
     )
 
        
-    }, { dependencies: [Button] })
+    },[Button] )
 
     useEffect(() => {
         console.log('test')

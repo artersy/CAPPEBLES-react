@@ -12,18 +12,20 @@ function Login({Button, setButton}) {
     useGSAP(()=>{
         gsap.fromTo(login.current,{
             width:"700px",
+            height:"540px",
             opacity:0.8
         },
 
         {
             width:"488px",
+            height:"488px",
             opacity:1,
             duration:1,
             ease:'power3.inOut'
         }
     )
         
-    },{dependencies:[Button]})
+    },[Button])
 
 
     return (
