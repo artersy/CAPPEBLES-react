@@ -1,27 +1,33 @@
 export const capstones = [
   {
     id: 1,
-    title: "Orthodox Code"
+    title: "Orthodox Code",
+    description: "A structured and disciplined approach to software development focusing on clean architecture and best practices."
   },
   {
     id: 2,
-    title: "Stone Cap"
+    title: "Stone Cap",
+    description: "A solid and reliable capstone project designed for stability and long-term usability in real-world applications."
   },
   {
     id: 3,
-    title: "Cuddle-Code"
+    title: "Cuddle-Code",
+    description: "A friendly and user-centered project that focuses on simple UI/UX and smooth user interaction."
   },
   {
     id: 4,
-    title: "Final DestiCode"
+    title: "Final DestiCode",
+    description: "A final-stage capstone project that integrates multiple systems into one complete solution."
   },
   {
     id: 5,
-    title: "Cram Code"
+    title: "Cram Code",
+    description: "A fast-paced development project created under time pressure, focusing on essential features."
   },
   {
     id: 6,
-    title: "TesteCode"
+    title: "TesteCode",
+    description: "A testing-focused capstone project used for experimenting with new ideas and technologies."
   }
 ];
 

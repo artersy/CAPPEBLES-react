@@ -9,45 +9,66 @@ import { useGSAP } from '@gsap/react'
 
 function SearchBar({ openSearchBar, setOpenSeachBar }) {
     const [expand, setExpand] = useState(false)
+    const [activeId, setActiveId] = useState(null)
 
     const [imageChange, setimageChange] = useState(false)
-    const ExpandHandler = (e) => {
+    const ExpandHandler = (e, id) => {
+    const arrow = e.currentTarget.querySelector('.arrow')
+    const description = e.currentTarget.querySelector('.description')
 
-        const arrrow = e.currentTarget.querySelector('.arrow');
-        console.log(arrrow)
+    const isOpen = activeId === id
+
+    if (!isOpen) {
         gsap.to(e.currentTarget, {
             height: "150px",
             duration: 0.5,
             ease: 'power1.inOut',
             background: '#B3A9A9'
-
         })
 
-        gsap.to(arrrow, {
+        gsap.to(arrow, {
             rotate: 180,
-            duration: 0.5,
-            ease: "power1.inOut"
-        });
-        setExpand((prev) => !prev)
+            duration: 0.5
+        })
 
-        if (expand) {
-            gsap.to(e.currentTarget, {
-                height: "50px",
-                duration: 1,
-                ease: 'power1.inOut',
-                background: '#D9D9D9'
+        gsap.set(description, { display: "block" })
 
-            })
+        gsap.fromTo(description,
+            { opacity: 0, y: -10 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 0.4,
+                ease: "power2.out"
+            }
+        )
 
-            gsap.to(arrrow, {
-                rotate: 360,
-                duration: 0.5,
-                ease: "power1.inOut"
-            });
-        }
+        setActiveId(id)
     }
+    else {
+        gsap.to(description, {
+            opacity: 0,
+            y: -10,
+            duration: 0.2,
+            onComplete: () => {
+                gsap.set(description, { display: "none" })
+            }
+        })
 
+        gsap.to(e.currentTarget, {
+            height: "50px",
+            duration: 0.5,
+            background: '#D9D9D9'
+        })
 
+        gsap.to(arrow, {
+            rotate: 0,
+            duration: 0.5
+        })
+
+        setActiveId(null)
+    }
+}
 
     return (
         <div
@@ -146,7 +167,7 @@ function SearchBar({ openSearchBar, setOpenSeachBar }) {
             "
                 />
 
-             
+
                 <div>
 
                     <h2
@@ -164,15 +185,28 @@ function SearchBar({ openSearchBar, setOpenSeachBar }) {
                         {capstones.map((item) => (
                             <div
                                 key={item.id}
-                                className='capstone-search-bar-title flex justify-between 
+                                className='capstone-search-bar-title flex justify-between items-start
                             bg-[#D9D9D9]
                             '
-                                onClick={(e) => ExpandHandler(e)}
+                                onClick={(e) => ExpandHandler(e, item.id)}
 
                             >
-                                <h1 className=''>
-                                    {item.title}
-                                </h1>
+                                <div className='flex flex-col justify-items-start items-start'>
+                                    <h1 className='block font-bold text-[1rem]'>
+                                        {item.title}
+                                    </h1>
+
+                                    <p
+                                        className="mt-2 text-sm text-gray-700 description overflow-hidden"
+                                        ref={(el) => (item.descRef = el)}
+                                        style={{ display: "none" }}
+                                    >
+                                        {item.description}
+                                    </p>
+
+                                </div>
+
+
                                 <div className='w-6 h-6 group-div'
                                 >
                                     <img className='h-full w-full object-fill arrow'
