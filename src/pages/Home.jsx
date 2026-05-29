@@ -1,19 +1,25 @@
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 import Header2 from "../components/Header2"
 import Footer from "../components/Footer"
+import About from "../components/About"
 
 import creates from "../assets/create.png"
 import find from "../assets/find.png"
 
-
 function Home() {
     const navigate = useNavigate();
+    const [showAbout, setShowAbout] = useState(false);
 
     return (
         <div className="min-h-screen bg-[linear-gradient(to_top_right,#03448C,#19B48E)] text-white">
 
-            <Header2 />
+            <Header2 onOpenAbout={() => setShowAbout(true)} />
+            <About
+                isOpen={showAbout}
+                onClose={() => setShowAbout(false)}
+            />
 
             <div className="flex flex-col items-center justify-center text-center px-6 pt-24">
 

@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import Header2 from "../components/Header2"
 import Footer from "../components/Footer"
+import About from "../components/About"
 
 import '../utility/utility.css'
 import { capstones } from '../data/data'
@@ -17,6 +18,7 @@ function Find() {
     const [selected, setSelected] = useState(null)
     const [openModal, setOpenModal] = useState(false)
     const [openSearchBar, setOpenSeachBar] = useState(false)
+    const [showAbout, setShowAbout] = useState(false)
     const navigate = useNavigate();
 
     useGSAP(() => {
@@ -99,7 +101,11 @@ function Find() {
 
     return (
         <div className="min-h-screen bg-[linear-gradient(to_top_right,#03448C,#19B48E)] text-white">
-            <Header2 />
+            <Header2 onOpenAbout={() => setShowAbout(true)} />
+            <About
+                isOpen={showAbout}
+                onClose={() => setShowAbout(false)}
+            />
 
             <div className="section-margin-x flex flex-col lg:flex-row items-center justify-center text-center px-4 sm:px-6 pt-20 sm:pt-24 gap-8 md:gap-20">
 
