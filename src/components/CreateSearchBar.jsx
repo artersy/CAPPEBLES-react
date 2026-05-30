@@ -80,7 +80,6 @@ function CreateSearchBar({
 
       <div className="relative w-full max-w-[42rem] bg-[#eaf4f4] rounded-2xl p-6 shadow-2xl">
 
-        {/* CLOSE */}
         <button
           onClick={() => setOpenSearchBar(false)}
           className="absolute top-4 right-4 text-3xl hover:scale-110"
@@ -88,7 +87,6 @@ function CreateSearchBar({
           ×
         </button>
 
-        {/* SEARCH */}
         <div className="flex gap-3 mt-8">
           <input
             value={search}
@@ -104,12 +102,10 @@ function CreateSearchBar({
 
         <div className="w-full h-[1px] bg-[#0e9995] opacity-40 my-6" />
 
-        {/* TITLE */}
         <h2 className="text-gray-500 mb-4">
           {search.trim() === "" ? "Suggestions:" : "Results:"}
         </h2>
 
-        {/* LIST */}
         <div className="flex flex-col gap-3 max-h-[300px] overflow-y-auto">
 
           {filteredStudents.map((student) => (
@@ -121,10 +117,8 @@ function CreateSearchBar({
               onClick={() => ExpandHandler(student.id)}
             >
 
-              {/* HEADER */}
               <div className="flex justify-between items-center px-3 py-2">
 
-                {/* NAME */}
                 <h1
                   className="font-bold text-[1rem] cursor-pointer hover:text-[#0e9995] text-black"
                   onClick={(e) => {
@@ -138,7 +132,6 @@ function CreateSearchBar({
 
                 <div className="flex items-center gap-2">
 
-                  {/* ADD BUTTON */}
                   {activeId === student.id && (
                     <button
                       onClick={(e) => {
@@ -152,7 +145,6 @@ function CreateSearchBar({
                     </button>
                   )}
 
-                  {/* ARROW */}
                   <img
                     src="/arrowdown.png"
                     className="w-5 h-5 arrow"
@@ -160,7 +152,6 @@ function CreateSearchBar({
                 </div>
               </div>
 
-              {/* EXPAND CONTENT */}
               <div className="container px-4 pb-4 text-black space-y-2 hidden">
 
                 <p className="text-sm text-gray-700">
@@ -192,7 +183,6 @@ function CreateSearchBar({
         </div>
       </div>
 
-      {/* ✅ CONFIRM MODAL (ONLY ONCE) */}
       <ConfirmAddModal
         openConfirm={openConfirm}
         setOpenConfirm={setOpenConfirm}
@@ -207,7 +197,6 @@ function CreateSearchBar({
         }}
       />
 
-      {/* ✅ REQUEST SENT MODAL */}
       <RequestSentModal
         openModal={openRequestSent}
         setOpenModal={setOpenRequestSent}

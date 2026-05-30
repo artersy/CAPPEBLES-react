@@ -86,7 +86,6 @@ function Create() {
                 </div>
             </div>
 
-            {/* CREATE MODAL */}
             {showModal && (
                 <CreateModal
                     onClose={() => setShowModal(false)}
@@ -94,7 +93,6 @@ function Create() {
                 />
             )}
 
-            {/* SEARCH MODAL */}
             {openSearchBar && (
                 <CreateSearchBar
                     openSearchBar={openSearchBar}
@@ -121,14 +119,12 @@ function Create() {
                 </div>
             )}
 
-            {/* NOTIFICATIONS */}
             <Notification
                 isOpen={showNotifModal}
                 notifications={notifications}
                 onClose={() => setShowNotifModal(false)}
             />
 
-            {/* <Footer /> */}
         </div>
     );
 }

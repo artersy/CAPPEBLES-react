@@ -27,10 +27,8 @@ function ConfirmAddModal({
                     {" "}to the group?
                 </p>
 
-                {/* BUTTONS */}
                 <div className="flex justify-center gap-4 mt-6">
 
-                    {/* CANCEL */}
                     <button
                         onClick={() => setOpenConfirm(false)}
                         className="bg-gray-400 text-white px-6 py-2 rounded-xl hover:scale-105 duration-200"
@@ -38,7 +36,7 @@ function ConfirmAddModal({
                         Cancel
                     </button>
 
-                    {/* CONFIRM */}
+
                     <button
                         onClick={() => {
                             onConfirm(selectedStudent);

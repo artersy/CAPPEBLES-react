@@ -30,4 +30,4 @@ function RequestSentModal({ openModal, setOpenModal }) {
   );
 }
 
-export default RequestSentModal;
+export default RequestSentModal;        
