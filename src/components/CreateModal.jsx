@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 import CompletedModal from "./CompletedModal";
 
-function CreateModal({ onClose }) {
+function CreateModal({ onClose, onCreate }) {
     const [showCompletedModal, setShowCompletedModal] = useState(false);
 
     const handleCreateGroup = () => {
-        setShowCompletedModal(true);
-    };
+    setShowCompletedModal(true);
 
+    if (onCreate) {
+        onCreate();
+    }
+};
     const handleCloseCompleted = () => {
         setShowCompletedModal(false);
-        onClose(); 
+        onClose();
     };
 
     return (
@@ -68,6 +71,7 @@ function CreateModal({ onClose }) {
                                 className="w-full mt-4 border border-[#66C7C7] bg-white outline-none p-4 resize-none text-black shadow-md"
                             />
                         </div>
+
                     </div>
 
                     <div className="flex justify-center mt-10">
@@ -78,6 +82,7 @@ function CreateModal({ onClose }) {
                             Create Group
                         </button>
                     </div>
+
                 </div>
             </div>
 

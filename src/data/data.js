@@ -68,3 +68,41 @@ export const developers = [
     role: "Student | Graphic Designer",
   }
 ];
+
+export const students = [
+  {
+    id: 1,
+    name: "Mikaella Mendoza",
+    role: "Frontend Developer",
+    skills: "React, Tailwind CSS",
+  },
+  {
+    id: 2,
+    name: "John Cruz",
+    role: "Backend Developer",
+    skills: "Node.js, Express",
+  },
+  {
+    id: 3,
+    name: "Maria Santos",
+    role: "UI/UX Designer",
+    skills: "Figma, Adobe XD",
+  },
+  {
+    id: 4,
+    name: "Joshua Reyes",
+    role: "Database Manager",
+    skills: "MySQL, PostgreSQL",
+  },
+  {
+    id: 5,
+    name: "Angela Garcia",
+    role: "Full Stack Developer",
+    skills: "React, Node.js",
+  },
+  {    id: 6,
+    name: "David Mendoza",
+    role: "Frontend Developer",
+    skills: "Vue.js, CSS",
+  },
+];
