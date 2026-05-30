@@ -8,21 +8,15 @@ import notificationsIcon from "../assets/notifications.png";
 import Notification from "../components/Notification";
 import FindModal from "../components/FindModal";
 
-export default function Header2({ onOpenAbout }) {
+export default function Header2({
+  onOpenAbout,
+  notifications,
+  setNotifications,
+}) {
   const navigate = useNavigate();
 
   const [showNotification, setShowNotification] = useState(false);
   const [showFind, setShowFind] = useState(false);
-
-  const [notifications, setNotifications] = useState([
-    {
-      id: 1,
-      title: "Application Submitted",
-      message: "Wait for approval.",
-      time: "Just now",
-      unread: true,
-    },
-  ]);
 
   const addNotification = (notif) => {
     setNotifications((prev) => [notif, ...prev]);

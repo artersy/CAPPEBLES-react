@@ -7,7 +7,6 @@ function FindModal({ openModal, setOpenModal, onNotify }) {
   if (!openModal) return null;
 
   const handleSubmit = () => {
-    // 🔥 1. add notification FIRST
     if (onNotify) {
       onNotify({
         id: Date.now(),
@@ -18,7 +17,6 @@ function FindModal({ openModal, setOpenModal, onNotify }) {
       });
     }
 
-    // 🔥 2. show success modal
     setSuccess(true);
   };
 
@@ -44,7 +42,6 @@ function FindModal({ openModal, setOpenModal, onNotify }) {
             ✕
           </button>
 
-          {/* FORM */}
           <div className="mt-6 flex flex-col">
 
             <label className="text-[#0e9995] font-semibold mb-2">
