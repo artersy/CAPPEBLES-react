@@ -10,12 +10,17 @@ function Register({ Button, setButton }) {
     const navigate = useNavigate()
 
     const registerRef = useRef(null)
-    const [formData, setFormData] = useState({
-        firstName: "",
-        lastName: "",
-        email: "",
-        password: "",
-        confirmPassword: ""
+    const [formData, setFormData] = useState(() => {
+        const savedUserData = localStorage.getItem("userData")
+        return savedUserData
+            ? { ...JSON.parse(savedUserData), confirmPassword: "" }
+            : {
+                firstName: "",
+                lastName: "",
+                email: "",
+                password: "",
+                confirmPassword: ""
+            }
     })
 
     const handleChange = (e) => {
@@ -30,13 +35,16 @@ function Register({ Button, setButton }) {
     const getFormData = (e) => {
         e.preventDefault()
 
-        if (formData) {
-            navigate("/home")
-            localStorage.setItem("userData", JSON.stringify(formData));
-
-
+        if (formData.password !== formData.confirmPassword) {
+            alert("Passwords do not match")
+            return
         }
 
+        const { firstName, lastName, email, password } = formData
+        const saveData = { firstName, lastName, email, password }
+
+        localStorage.setItem("userData", JSON.stringify(saveData))
+        navigate("/home")
     }
 
 
@@ -108,7 +116,7 @@ function Register({ Button, setButton }) {
                             </label>
                             <input
                                 className="login-inputs"
-                                type="text" name="name"
+                                type="text"
                                 name="firstName"
                                 value={formData.firstName}
                                 onChange={handleChange}
@@ -122,23 +130,23 @@ function Register({ Button, setButton }) {
                             </label>
                             <input
                                 className="login-inputs"
-                                type="text" name="name"
+                                type="text"
+                                name="lastName"
                                 required
                                 value={formData.lastName}
                                 onChange={handleChange}
-                                name="lastName"
                             />
                         </div>
                     </div>
 
                     <label className="auth-text ">School Email</label>
                     <input
-                        type="text" name="name"
+                        type="text"
+                        name="email"
                         required
                         className='login-inputs'
                         value={formData.email}
                         onChange={handleChange}
-                        name="email"
                     />
 
                     <div className='flex input-row gap-5 '>
@@ -148,12 +156,11 @@ function Register({ Button, setButton }) {
                             </label>
                             <input
                                 className="login-inputs"
-                                type="password" name="name"
+                                type="password"
+                                name="password"
                                 required
                                 value={formData.password}
                                 onChange={handleChange}
-                                name="password"
-
                             />
                         </div>
 
@@ -164,11 +171,11 @@ function Register({ Button, setButton }) {
                             </label>
                             <input
                                 className="login-inputs"
-                                type="password" name="name"
+                                type="password"
+                                name="confirmPassword"
                                 required
                                 value={formData.confirmPassword}
                                 onChange={handleChange}
-                                name="confirmPassword"
                             />
                         </div>
                     </div>

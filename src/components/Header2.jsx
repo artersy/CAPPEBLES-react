@@ -10,8 +10,8 @@ import FindModal from "../components/FindModal";
 
 export default function Header2({
   onOpenAbout,
-  notifications,
-  setNotifications,
+  notifications = [],
+  setNotifications = () => {},
 }) {
   const navigate = useNavigate();
 
