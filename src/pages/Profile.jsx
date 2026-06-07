@@ -15,10 +15,22 @@ function Profile({ notifications, setNotifications }) {
         try {
             const saved = localStorage.getItem('pebble_avatar')
             if (saved) setAvatar(saved)
+
             const raw = localStorage.getItem('pebble_user')
             if (raw) {
                 const parsed = JSON.parse(raw)
                 setUser(prev => ({ ...prev, ...parsed }))
+            } else {
+                const rawAccount = localStorage.getItem('userData')
+                if (rawAccount) {
+                    const account = JSON.parse(rawAccount)
+                    const fullName = `${account.firstName || ""} ${account.lastName || ""}`.trim()
+                    setUser(prev => ({
+                        ...prev,
+                        name: fullName || prev.name,
+                        email: account.email || prev.email,
+                    }))
+                }
             }
         } catch (e) {}
     }, [])

@@ -30,6 +30,14 @@ function EditProfile({ notifications, setNotifications }) {
                 setEmail(u.email || "")
                 setSkillsText((u.skills && Array.isArray(u.skills)) ? u.skills.join(', ') : (u.skills || ""))
                 setBackgroundText(u.background || "")
+            } else {
+                const rawAccount = localStorage.getItem('userData')
+                if (rawAccount) {
+                    const account = JSON.parse(rawAccount)
+                    const fullName = `${account.firstName || ""} ${account.lastName || ""}`.trim()
+                    setName(fullName)
+                    setEmail(account.email || "")
+                }
             }
         } catch (e) {}
     }, [])
@@ -167,9 +175,24 @@ function EditProfile({ notifications, setNotifications }) {
                     <div className="mt-6 flex justify-end">
                         <button
                             onClick={() => {
-                                const skills = skillsText.split(',').map(s => s.trim()).filter(Boolean)
+                                        const skills = skillsText.split(',').map(s => s.trim()).filter(Boolean)
                                 const user = { name, section, program, email, skills, background: backgroundText }
                                 try { localStorage.setItem('pebble_user', JSON.stringify(user)) } catch (e) {}
+                                try {
+                                    const stored = localStorage.getItem('userData')
+                                    if (stored) {
+                                        const parsed = JSON.parse(stored)
+                                        const [firstName, ...rest] = name.split(' ')
+                                        const lastName = rest.join(' ')
+                                        const updatedAccount = {
+                                            ...parsed,
+                                            email,
+                                            firstName: firstName || parsed.firstName || "",
+                                            lastName: lastName || parsed.lastName || firstName || "",
+                                        }
+                                        localStorage.setItem('userData', JSON.stringify(updatedAccount))
+                                    }
+                                } catch (e) {}
                                 navigate('/profile')
                             }}
                             className="bg-[#19B48E] px-6 py-3 rounded-xl font-semibold hover:scale-105 transition"

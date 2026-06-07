@@ -13,10 +13,21 @@ function Register({ Button, setButton }) {
     const [formData, setFormData] = useState(() => {
         const savedUserData = localStorage.getItem("userData")
         return savedUserData
-            ? { ...JSON.parse(savedUserData), confirmPassword: "" }
+            ? {
+                firstName: "",
+                lastName: "",
+                section: "",
+                program: "",
+                email: "",
+                password: "",
+                confirmPassword: "",
+                ...JSON.parse(savedUserData)
+            }
             : {
                 firstName: "",
                 lastName: "",
+                section: "",
+                program: "",
                 email: "",
                 password: "",
                 confirmPassword: ""
@@ -40,10 +51,19 @@ function Register({ Button, setButton }) {
             return
         }
 
-        const { firstName, lastName, email, password } = formData
-        const saveData = { firstName, lastName, email, password }
+        const { firstName, lastName, section, program, email, password } = formData
+        const saveData = { firstName, lastName, section, program, email, password }
 
         localStorage.setItem("userData", JSON.stringify(saveData))
+        const profileUser = {
+            name: `${firstName} ${lastName}`.trim(),
+            email,
+            section,
+            program,
+            skills: [],
+            background: ""
+        }
+        localStorage.setItem("pebble_user", JSON.stringify(profileUser))
         navigate("/home")
     }
 
@@ -148,6 +168,32 @@ function Register({ Button, setButton }) {
                         value={formData.email}
                         onChange={handleChange}
                     />
+
+                    <div className='flex gap-5 input-row'>
+                        <div className='flex-1'>
+                            <label className="auth-text block">Section | Year Level</label>
+                            <input
+                                className="login-inputs"
+                                type="text"
+                                name="section"
+                                value={formData.section}
+                                onChange={handleChange}
+                                placeholder="A602 | 4th Year"
+                            />
+                        </div>
+
+                        <div className='flex-1'>
+                            <label className="auth-text">Program</label>
+                            <input
+                                className="login-inputs"
+                                type="text"
+                                name="program"
+                                value={formData.program}
+                                onChange={handleChange}
+                                placeholder="BSIT"
+                            />
+                        </div>
+                    </div>
 
                     <div className='flex input-row gap-5 '>
                         <div className='flex-1'>
